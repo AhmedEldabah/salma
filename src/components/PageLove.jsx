@@ -57,7 +57,7 @@ export default function PageLove({ onBack, onRestart }) {
     >
       <Confetti count={burst ? 90 : 0} key={burst ? 'burst' : 'idle'} />
 
-      <main className="relative z-20 flex flex-col items-center w-full max-w-sm px-6 py-16">
+      <main className="relative z-20 flex flex-col items-center justify-center flex-1 w-full max-w-sm px-6 py-16">
         <div className="text-center mb-6 animate-fadeInUp">
           <span
             className={`block mb-3 ${loved ? 'animate-heartbeat' : 'animate-wiggle'}`}
@@ -94,7 +94,7 @@ export default function PageLove({ onBack, onRestart }) {
                 fontSize: '1.15rem',
               }}
             >
-              to my favorite gazma ✨
+              to my favorite person ✨
             </p>
           </ScratchReveal>
         </div>
