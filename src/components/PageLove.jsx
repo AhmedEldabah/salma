@@ -57,8 +57,8 @@ export default function PageLove({ onBack, onRestart }) {
     >
       <Confetti count={burst ? 90 : 0} key={burst ? 'burst' : 'idle'} />
 
-      <main className="relative z-20 flex flex-col items-center justify-center flex-1 w-full max-w-sm px-8 py-24">
-        <div className="text-center mb-12 animate-fadeInUp">
+      <main className="relative z-20 flex flex-col items-center justify-center flex-1 w-full max-w-sm px-8 py-28">
+        <div className="text-center mb-16 animate-fadeInUp">
           <span
             className={`block mb-3 ${loved ? 'animate-heartbeat' : 'animate-wiggle'}`}
             style={{ fontSize: 'clamp(3.5rem, 12vw, 5.5rem)' }}
@@ -84,7 +84,7 @@ export default function PageLove({ onBack, onRestart }) {
         </div>
 
         {/* scratch-to-reveal hidden message */}
-        <div className="animate-fadeInUp delay-200 mb-16">
+        <div className="animate-fadeInUp delay-200 mb-20">
           <ScratchReveal width={300} height={130} hint="Scratch for a secret 💛">
             <p
               className="font-bold leading-snug px-2"
@@ -101,7 +101,7 @@ export default function PageLove({ onBack, onRestart }) {
 
         {/* main message card */}
         <div
-          className="glass rounded-3xl px-10 py-12 text-center w-full mb-16 animate-fadeInUp delay-300"
+          className="glass rounded-3xl px-10 py-12 text-center w-full mb-20 animate-fadeInUp delay-300"
           style={{ boxShadow: '0 8px 32px rgba(0,0,0,0.2)' }}
         >
           <p className="font-bold leading-relaxed text-white/95" style={{ fontSize: '1rem' }}>
@@ -126,7 +126,7 @@ export default function PageLove({ onBack, onRestart }) {
           </button>
         )}
 
-        <div className="flex flex-col items-center gap-12 w-full animate-fadeInUp delay-400">
+        <div className="flex flex-col items-center gap-16 w-full animate-fadeInUp delay-400">
           <button
             onClick={() => {
               setLoved(true)
@@ -192,7 +192,7 @@ export default function PageLove({ onBack, onRestart }) {
           ))}
         </div>
 
-        <div className="animate-fadeInUp delay-700 flex gap-12 mt-16">
+        <div className="animate-fadeInUp delay-700 flex gap-16 mt-20">
           <button
             onClick={onBack}
             className="btn-primary"

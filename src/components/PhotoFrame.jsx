@@ -1,3 +1,5 @@
+import salmaImg from '../assets/salma.png'
+
 export default function PhotoFrame() {
   return (
     <div className="relative flex items-center justify-center">
@@ -31,17 +33,11 @@ export default function PhotoFrame() {
           background: 'linear-gradient(135deg, rgba(255,228,225,0.8) 0%, rgba(255,182,193,0.8) 100%)',
         }}
       >
-        {/* placeholder silhouette */}
-        <div className="flex flex-col items-center justify-end w-full h-full pb-2 opacity-50">
-          <div
-            className="rounded-full bg-pink-200 mb-1"
-            style={{ width: '34px', height: '34px' }}
-          />
-          <div
-            className="rounded-t-full bg-pink-200"
-            style={{ width: '60px', height: '38px' }}
-          />
-        </div>
+        <img
+          src={salmaImg}
+          alt="Salma"
+          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+        />
       </div>
     </div>
   )
