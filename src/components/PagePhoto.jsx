@@ -1,6 +1,9 @@
-import Balloon from './Balloon'
 import Bunting from './Bunting'
 import PhotoFrame from './PhotoFrame'
+import PopBalloon from './PopBalloon'
+import HandDrawnUnderline from './HandDrawnUnderline'
+import CountUp from './CountUp'
+import { useInView } from '../hooks'
 
 const BALLOON_PAIRS = [
   { color: '#FF4081', size: 46, delay: '0s', duration: '3.8s' },
@@ -9,23 +12,29 @@ const BALLOON_PAIRS = [
   { color: '#FFD700', size: 34, delay: '0.9s', duration: '3.5s' },
 ]
 
+const TRAITS = [
+  { icon: '🎀', label: 'So loved' },
+  { icon: '🌸', label: 'So special' },
+  { icon: '💛', label: 'So wonderful' },
+  { icon: '⭐', label: 'So bright' },
+]
+
 export default function PagePhoto({ onNext, onBack }) {
+  const [traitsRef, traitsIn] = useInView({ threshold: 0.3 })
+
   return (
     <div
-      className="relative min-h-screen w-full overflow-hidden flex flex-col"
+      className="relative w-full overflow-hidden flex flex-col"
       style={{
         background: 'linear-gradient(150deg, #BE185D 0%, #E91E8C 45%, #FB923C 100%)',
+        minHeight: '100vh',
       }}
     >
-      {/* bunting */}
       <div className="relative z-20 animate-fadeIn">
         <Bunting />
       </div>
 
-      {/* main content */}
       <main className="relative z-20 flex flex-col items-center flex-1 px-4 pb-10">
-
-        {/* subtitle */}
         <p
           className="animate-fadeInUp delay-100 mb-4 font-extrabold tracking-widest uppercase"
           style={{ color: 'rgba(255,255,255,0.85)', fontSize: 'clamp(0.75rem, 2.5vw, 0.95rem)' }}
@@ -33,15 +42,21 @@ export default function PagePhoto({ onNext, onBack }) {
           ✨ Today's Star ✨
         </p>
 
-        {/* balloon + photo + balloon row */}
-        <div className="flex items-end justify-center gap-4 sm:gap-12 mb-6 animate-fadeInUp delay-200">
-          {/* left balloons */}
+        {/* tap-to-pop balloons + photo */}
+        <div className="flex items-end justify-center gap-2 sm:gap-12 mb-6 animate-fadeInUp delay-200">
           <div className="flex flex-col items-center gap-1">
-            <Balloon color={BALLOON_PAIRS[0].color} size={BALLOON_PAIRS[0].size} style={{ animationDelay: BALLOON_PAIRS[0].delay, animationDuration: BALLOON_PAIRS[0].duration }} />
-            <Balloon color={BALLOON_PAIRS[1].color} size={BALLOON_PAIRS[1].size} style={{ animationDelay: BALLOON_PAIRS[1].delay, animationDuration: BALLOON_PAIRS[1].duration, marginTop: '-10px' }} />
+            <PopBalloon
+              color={BALLOON_PAIRS[0].color}
+              size={BALLOON_PAIRS[0].size}
+              style={{ animationDelay: BALLOON_PAIRS[0].delay, animationDuration: BALLOON_PAIRS[0].duration }}
+            />
+            <PopBalloon
+              color={BALLOON_PAIRS[1].color}
+              size={BALLOON_PAIRS[1].size}
+              style={{ animationDelay: BALLOON_PAIRS[1].delay, animationDuration: BALLOON_PAIRS[1].duration, marginTop: '-10px' }}
+            />
           </div>
 
-          {/* photo */}
           <div className="relative">
             <div
               className="absolute -top-12 left-1/2 -translate-x-1/2 text-4xl sm:text-5xl animate-sway select-none"
@@ -50,14 +65,13 @@ export default function PagePhoto({ onNext, onBack }) {
               🎩
             </div>
             <PhotoFrame />
-            {/* age badge */}
             <div
               className="absolute -bottom-2 -right-3 animate-popIn delay-500"
               style={{
                 background: 'linear-gradient(135deg, #FFD700, #FF8C00)',
                 borderRadius: '50%',
-                width: '44px',
-                height: '44px',
+                width: 48,
+                height: 48,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -65,21 +79,34 @@ export default function PagePhoto({ onNext, onBack }) {
                 border: '2.5px solid #fff',
               }}
             >
-              <span style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 900, color: '#fff', fontSize: '0.85rem' }}>3🎂</span>
+              <span style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 900, color: '#fff', fontSize: '0.95rem' }}>
+                <CountUp to={3} duration={1100} />🎂
+              </span>
             </div>
           </div>
 
-          {/* right balloons */}
           <div className="flex flex-col items-center gap-1">
-            <Balloon color={BALLOON_PAIRS[2].color} size={BALLOON_PAIRS[2].size} style={{ animationDelay: BALLOON_PAIRS[2].delay, animationDuration: BALLOON_PAIRS[2].duration }} />
-            <Balloon color={BALLOON_PAIRS[3].color} size={BALLOON_PAIRS[3].size} style={{ animationDelay: BALLOON_PAIRS[3].delay, animationDuration: BALLOON_PAIRS[3].duration, marginTop: '-10px' }} />
+            <PopBalloon
+              color={BALLOON_PAIRS[2].color}
+              size={BALLOON_PAIRS[2].size}
+              style={{ animationDelay: BALLOON_PAIRS[2].delay, animationDuration: BALLOON_PAIRS[2].duration }}
+            />
+            <PopBalloon
+              color={BALLOON_PAIRS[3].color}
+              size={BALLOON_PAIRS[3].size}
+              style={{ animationDelay: BALLOON_PAIRS[3].delay, animationDuration: BALLOON_PAIRS[3].duration, marginTop: '-10px' }}
+            />
           </div>
         </div>
 
-        {/* name card */}
+        <p className="text-white/70 font-bold text-xs uppercase tracking-widest animate-fadeInUp delay-400 mb-4">
+          tap a balloon 🎈
+        </p>
+
+        {/* name card with hand-drawn underline */}
         <div className="animate-fadeInUp delay-400 mb-6">
           <div
-            className="glass rounded-3xl px-10 py-4 text-center"
+            className="glass rounded-3xl px-10 py-4 text-center relative"
             style={{ boxShadow: '0 8px 32px rgba(0,0,0,0.15)' }}
           >
             <h2
@@ -92,31 +119,39 @@ export default function PagePhoto({ onNext, onBack }) {
             >
               Salma 💖
             </h2>
-            <p
-              className="mt-1 font-bold tracking-widest uppercase"
-              style={{ color: 'rgba(255,255,255,0.75)', fontSize: '0.75rem' }}
-            >
+            <div className="absolute left-1/2 -translate-x-1/2" style={{ width: '60%', bottom: 4 }}>
+              <HandDrawnUnderline color="#FFD700" delay={600} stroke={4} height={10} />
+            </div>
+            <p className="mt-1 font-bold tracking-widest uppercase text-white/75 text-xs">
               Our precious little princess
             </p>
           </div>
         </div>
 
-        {/* small detail */}
-        <div className="animate-fadeInUp delay-500 flex gap-4 mb-8 flex-wrap justify-center">
-          {['🎀 So loved', '🌸 So special', '💛 So wonderful'].map((t) => (
+        {/* trait chips — viewport-triggered staggered reveal */}
+        <div ref={traitsRef} className="flex gap-3 mb-8 flex-wrap justify-center max-w-md">
+          {TRAITS.map((t, i) => (
             <span
-              key={t}
-              className="glass px-4 py-1.5 rounded-full font-bold"
-              style={{ color: '#fff', fontSize: '0.85rem' }}
+              key={t.label}
+              className="glass tap-card px-4 py-2 rounded-full font-bold text-white text-sm flex items-center gap-1.5"
+              style={{
+                opacity: traitsIn ? 1 : 0,
+                transform: traitsIn ? 'translateY(0) scale(1)' : 'translateY(16px) scale(0.85)',
+                transition: `all 600ms cubic-bezier(0.34,1.56,0.64,1) ${i * 110}ms`,
+              }}
             >
-              {t}
+              <span className="text-base">{t.icon}</span>
+              {t.label}
             </span>
           ))}
         </div>
 
-        {/* nav buttons */}
         <div className="animate-fadeInUp delay-700 flex gap-4">
-          <button onClick={onBack} className="btn-primary" style={{ background: 'rgba(255,255,255,0.2)', boxShadow: 'none', border: '2px solid rgba(255,255,255,0.5)' }}>
+          <button
+            onClick={onBack}
+            className="btn-primary"
+            style={{ background: 'rgba(255,255,255,0.2)', boxShadow: 'none', border: '2px solid rgba(255,255,255,0.5)' }}
+          >
             ← Back
           </button>
           <button onClick={onNext} className="btn-primary">
@@ -124,12 +159,11 @@ export default function PagePhoto({ onNext, onBack }) {
           </button>
         </div>
 
-        {/* page indicator */}
         <div className="animate-fadeInUp delay-800 flex gap-2 mt-8">
-          <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'rgba(255,255,255,0.4)' }} />
-          <div style={{ width: '28px', height: '8px', borderRadius: '4px', background: '#fff' }} />
-          <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'rgba(255,255,255,0.4)' }} />
-          <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'rgba(255,255,255,0.4)' }} />
+          <div style={{ width: 8, height: 8, borderRadius: '50%', background: 'rgba(255,255,255,0.4)' }} />
+          <div style={{ width: 28, height: 8, borderRadius: 4, background: '#fff' }} />
+          <div style={{ width: 8, height: 8, borderRadius: '50%', background: 'rgba(255,255,255,0.4)' }} />
+          <div style={{ width: 8, height: 8, borderRadius: '50%', background: 'rgba(255,255,255,0.4)' }} />
         </div>
       </main>
     </div>

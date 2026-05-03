@@ -1,6 +1,11 @@
-import { useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import Confetti from './Confetti'
-import Balloon from './Balloon'
+import PopBalloon from './PopBalloon'
+import ScratchReveal from './ScratchReveal'
+import LetterReveal from './LetterReveal'
+import CountUp from './CountUp'
+import HandDrawnUnderline from './HandDrawnUnderline'
+import { useShake } from '../hooks'
 
 const BOTTOM_BALLOONS = [
   { color: '#FF4444', size: 42 },
@@ -13,28 +18,46 @@ const BOTTOM_BALLOONS = [
 export default function PageLove({ onBack, onRestart }) {
   const [loved, setLoved] = useState(false)
   const [burst, setBurst] = useState(false)
+  const [shakeHint, setShakeHint] = useState(true)
+  const [motionAsked, setMotionAsked] = useState(false)
 
-  const handleConfetti = () => {
+  const triggerConfetti = useCallback(() => {
     setBurst(true)
+    if (navigator.vibrate) navigator.vibrate([20, 40, 20])
     setTimeout(() => setBurst(false), 1800)
-  }
+  }, [])
 
-  const handleLove = () => {
-    setLoved(true)
+  useShake(triggerConfetti, 14)
+
+  // Auto-dismiss the shake hint after a while
+  useEffect(() => {
+    const t = setTimeout(() => setShakeHint(false), 7000)
+    return () => clearTimeout(t)
+  }, [])
+
+  // iOS 13+ requires permission for DeviceMotion
+  const enableMotion = async () => {
+    setMotionAsked(true)
+    try {
+      if (typeof DeviceMotionEvent !== 'undefined' && typeof DeviceMotionEvent.requestPermission === 'function') {
+        await DeviceMotionEvent.requestPermission()
+      }
+    } catch {
+      /* ignore */
+    }
   }
 
   return (
     <div
-      className="relative min-h-screen w-full overflow-hidden flex flex-col items-center"
+      className="relative w-full overflow-hidden flex flex-col items-center"
       style={{
         background: 'linear-gradient(150deg, #7F1D1D 0%, #BE123C 40%, #E11D48 75%, #FF69B4 100%)',
+        minHeight: '100vh',
       }}
     >
       <Confetti count={burst ? 90 : 0} key={burst ? 'burst' : 'idle'} />
 
       <main className="relative z-20 flex flex-col items-center w-full max-w-sm px-5 py-10">
-
-        {/* heading */}
         <div className="text-center mb-6 animate-fadeInUp">
           <span
             className={`block mb-3 ${loved ? 'animate-heartbeat' : 'animate-wiggle'}`}
@@ -42,39 +65,75 @@ export default function PageLove({ onBack, onRestart }) {
           >
             {loved ? '💗' : '💕'}
           </span>
-          <h2
-            style={{
-              fontFamily: "'Pacifico', cursive",
-              fontSize: 'clamp(1.8rem, 6vw, 2.6rem)',
-              color: '#fff',
-              textShadow: '0 4px 20px rgba(0,0,0,0.25)',
-            }}
-          >
-            With All Our Love
-          </h2>
+          <div className="relative inline-block">
+            <LetterReveal
+              as="h2"
+              text="With All Our Love"
+              stagger={42}
+              style={{
+                fontFamily: "'Pacifico', cursive",
+                fontSize: 'clamp(1.8rem, 6vw, 2.6rem)',
+                color: '#fff',
+                textShadow: '0 4px 20px rgba(0,0,0,0.25)',
+              }}
+            />
+            <div className="absolute -bottom-1 left-1/2 -translate-x-1/2" style={{ width: '75%' }}>
+              <HandDrawnUnderline color="#FFD700" delay={1100} stroke={3} height={10} />
+            </div>
+          </div>
         </div>
 
-        {/* message card */}
+        {/* scratch-to-reveal hidden message */}
+        <div className="animate-fadeInUp delay-200 mb-6">
+          <ScratchReveal width={300} height={130} hint="Scratch for a secret 💛">
+            <p
+              className="font-bold leading-snug px-2"
+              style={{
+                fontFamily: "'Pacifico', cursive",
+                color: '#BE185D',
+                fontSize: '1.15rem',
+              }}
+            >
+              You are our<br />favourite little human ✨
+            </p>
+          </ScratchReveal>
+        </div>
+
+        {/* main message card */}
         <div
-          className="glass rounded-3xl px-7 py-6 text-center w-full mb-6 animate-fadeInUp delay-200"
+          className="glass rounded-3xl px-7 py-6 text-center w-full mb-6 animate-fadeInUp delay-300"
           style={{ boxShadow: '0 8px 32px rgba(0,0,0,0.2)' }}
         >
-          <p
-            className="font-bold leading-relaxed"
-            style={{ color: 'rgba(255,255,255,0.92)', fontSize: '1rem' }}
-          >
+          <p className="font-bold leading-relaxed text-white/95" style={{ fontSize: '1rem' }}>
             Salma, you bring so much light and joy into our lives. 🌟<br />
             Every smile you share makes our world a brighter place.<br />
             Today is YOUR day — celebrate big! 🎉
           </p>
         </div>
 
-        {/* interactive buttons */}
-        <div className="flex flex-col items-center gap-4 w-full animate-fadeInUp delay-400">
-
-          {/* love button */}
+        {/* shake-to-confetti hint */}
+        {shakeHint && (
           <button
-            onClick={handleLove}
+            onClick={() => {
+              if (!motionAsked) enableMotion()
+              triggerConfetti()
+              setShakeHint(false)
+            }}
+            className="glass rounded-full px-4 py-2 text-white font-extrabold text-sm flex items-center gap-2 mb-4 animate-fadeInUp delay-400"
+            style={{ boxShadow: '0 6px 20px rgba(0,0,0,0.2)' }}
+            data-no-burst="true"
+          >
+            <span className="text-xl animate-wiggle">📱</span>
+            shake your phone for confetti!
+          </button>
+        )}
+
+        <div className="flex flex-col items-center gap-4 w-full animate-fadeInUp delay-400">
+          <button
+            onClick={() => {
+              setLoved(true)
+              if (navigator.vibrate) navigator.vibrate(30)
+            }}
             className="btn-primary w-full justify-center"
             style={{
               background: loved
@@ -90,9 +149,8 @@ export default function PageLove({ onBack, onRestart }) {
             {loved ? '💖 I love you so much! 💖' : '💕 I love you, Salma! 💕'}
           </button>
 
-          {/* confetti burst */}
           <button
-            onClick={handleConfetti}
+            onClick={triggerConfetti}
             className="btn-primary w-full justify-center btn-bounce"
             style={{
               background: 'linear-gradient(135deg, #F59E0B, #FBBF24)',
@@ -103,7 +161,7 @@ export default function PageLove({ onBack, onRestart }) {
             🎊 Throw Confetti! 🎊
           </button>
 
-          {/* age reveal */}
+          {/* age reveal with count-up */}
           <div
             className="glass w-full rounded-2xl py-4 text-center"
             style={{ boxShadow: '0 4px 16px rgba(0,0,0,0.15)' }}
@@ -116,18 +174,18 @@ export default function PageLove({ onBack, onRestart }) {
                 fontSize: 'clamp(1.4rem, 5vw, 2rem)',
               }}
             >
-              🎂 Salma is 3 years old! 🎂
+              🎂 Salma is <CountUp to={3} duration={1400} /> years old! 🎂
             </p>
-            <p className="font-bold mt-1" style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.85rem' }}>
-              Three wonderful years of magic ✨
+            <p className="font-bold mt-1 text-white/70 text-sm">
+              <CountUp to={3} duration={1400} /> wonderful years of magic ✨
             </p>
           </div>
         </div>
 
-        {/* bottom balloons */}
+        {/* tap-to-pop bottom balloons */}
         <div className="flex justify-center gap-2 mt-8 animate-fadeInUp delay-600">
           {BOTTOM_BALLOONS.map((b, i) => (
-            <Balloon
+            <PopBalloon
               key={i}
               color={b.color}
               size={b.size}
@@ -136,22 +194,28 @@ export default function PageLove({ onBack, onRestart }) {
           ))}
         </div>
 
-        {/* nav buttons */}
         <div className="animate-fadeInUp delay-700 flex gap-4 mt-6">
-          <button onClick={onBack} className="btn-primary" style={{ background: 'rgba(255,255,255,0.2)', boxShadow: 'none', border: '2px solid rgba(255,255,255,0.5)' }}>
+          <button
+            onClick={onBack}
+            className="btn-primary"
+            style={{ background: 'rgba(255,255,255,0.2)', boxShadow: 'none', border: '2px solid rgba(255,255,255,0.5)' }}
+          >
             ← Back
           </button>
-          <button onClick={onRestart} className="btn-primary" style={{ background: 'rgba(255,255,255,0.2)', boxShadow: 'none', border: '2px solid rgba(255,255,255,0.5)' }}>
+          <button
+            onClick={onRestart}
+            className="btn-primary"
+            style={{ background: 'rgba(255,255,255,0.2)', boxShadow: 'none', border: '2px solid rgba(255,255,255,0.5)' }}
+          >
             🔄 Start Over
           </button>
         </div>
 
-        {/* page indicator */}
         <div className="animate-fadeInUp delay-800 flex gap-2 mt-8">
-          <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'rgba(255,255,255,0.4)' }} />
-          <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'rgba(255,255,255,0.4)' }} />
-          <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'rgba(255,255,255,0.4)' }} />
-          <div style={{ width: '28px', height: '8px', borderRadius: '4px', background: '#fff' }} />
+          <div style={{ width: 8, height: 8, borderRadius: '50%', background: 'rgba(255,255,255,0.4)' }} />
+          <div style={{ width: 8, height: 8, borderRadius: '50%', background: 'rgba(255,255,255,0.4)' }} />
+          <div style={{ width: 8, height: 8, borderRadius: '50%', background: 'rgba(255,255,255,0.4)' }} />
+          <div style={{ width: 28, height: 8, borderRadius: 4, background: '#fff' }} />
         </div>
       </main>
     </div>

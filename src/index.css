@@ -132,6 +132,55 @@ body {
   50%       { transform: translateY(-16px); }
 }
 
+@keyframes tapSparkle {
+  0%   { opacity: 1; transform: translate(0, 0) scale(0.4); }
+  60%  { opacity: 1; }
+  100% { opacity: 0; transform: translate(var(--dx, 0), var(--dy, 0)) scale(1.15); }
+}
+
+@keyframes popBurst {
+  0%   { opacity: 0; transform: scale(0.4) rotate(-15deg); }
+  40%  { opacity: 1; transform: scale(1.35) rotate(8deg); }
+  100% { opacity: 0; transform: scale(1.8) rotate(0deg); }
+}
+
+@keyframes idlePop {
+  from { opacity: 0; transform: translateY(20px) scale(0.7); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
+}
+
+@keyframes scrollHint {
+  0%   { opacity: 0; transform: translateY(-6px); }
+  50%  { opacity: 1; transform: translateY(2px); }
+  100% { opacity: 0; transform: translateY(10px); }
+}
+
+@keyframes pageSlideIn {
+  from { opacity: 0; transform: translateX(40px) scale(0.98); }
+  to   { opacity: 1; transform: translateX(0)    scale(1); }
+}
+
+@keyframes pageSlideInReverse {
+  from { opacity: 0; transform: translateX(-40px) scale(0.98); }
+  to   { opacity: 1; transform: translateX(0)     scale(1); }
+}
+
+@keyframes ripple {
+  0%   { transform: scale(0); opacity: 0.55; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+@keyframes cardTap {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(0.97); }
+  100% { transform: scale(1); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
 /* ── Utility animation classes ──────────────────────────────────── */
 
 .animate-float       { animation: float 4s ease-in-out infinite; }
@@ -151,8 +200,17 @@ body {
 .animate-bounce-slow { animation: bounce 2s ease-in-out infinite; }
 .animate-wiggle      { animation: wiggle 1.8s ease-in-out infinite; }
 .animate-page-enter  { animation: pageEnter 0.55s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.animate-page-slide  { animation: pageSlideIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.animate-page-slide-back { animation: pageSlideInReverse 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.animate-scroll-hint { animation: scrollHint 1.8s ease-in-out infinite; }
+.animate-card-tap    { animation: cardTap 280ms cubic-bezier(0.34,1.56,0.64,1); }
 
 .btn-bounce:hover    { animation: shake 0.4s ease-in-out; }
+.btn-bounce:active   { animation: shake 0.4s ease-in-out; }
+
+/* Tappable card: subtle press feedback, no hover dependency */
+.tap-card { transition: transform 180ms cubic-bezier(0.22,1,0.36,1), box-shadow 180ms; }
+.tap-card:active { transform: scale(0.98); }
 
 /* ── Delay helpers ──────────────────────────────────────────────── */
 
@@ -215,5 +273,15 @@ body {
 
 .btn-gold:hover {
   box-shadow: 0 10px 32px rgba(245, 158, 11, 0.7);
+}
+
+/* ── Reduced motion ─────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }
 
