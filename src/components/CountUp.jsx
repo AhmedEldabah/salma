@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useInView } from '../hooks'
 
-export default function CountUp({ to = 3, duration = 1300, className, style, suffix = '', prefix = '' }) {
+export default function CountUp({ to = 20, duration = 1300, className, style, suffix = '', prefix = '' }) {
   const [ref, inView] = useInView({ threshold: 0.4 })
   const [n, setN] = useState(0)
 
