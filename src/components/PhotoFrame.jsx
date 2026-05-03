@@ -7,8 +7,8 @@ export default function PhotoFrame() {
       <div
         className="absolute rounded-full animate-pulse-glow"
         style={{
-          width: '210px',
-          height: '210px',
+          width: '240px',
+          height: '240px',
           background: 'radial-gradient(circle, rgba(255,105,180,0.35) 0%, transparent 70%)',
         }}
       />
@@ -16,8 +16,8 @@ export default function PhotoFrame() {
       <div
         className="absolute rounded-full"
         style={{
-          width: '180px',
-          height: '180px',
+          width: '210px',
+          height: '210px',
           border: '3px dashed rgba(255,255,255,0.45)',
           animation: 'float 6s ease-in-out infinite',
         }}
@@ -26,10 +26,10 @@ export default function PhotoFrame() {
       <div
         className="relative rounded-full overflow-hidden"
         style={{
-          width: '160px',
-          height: '160px',
-          border: '5px solid rgba(255,255,255,0.9)',
-          boxShadow: '0 0 0 3px rgba(255,105,180,0.5), 0 10px 40px rgba(0,0,0,0.25)',
+          width: '180px',
+          height: '180px',
+          border: '10px solid rgba(255,255,255,0.95)',
+          boxShadow: '0 0 0 6px rgba(255,105,180,0.55), 0 0 0 10px rgba(255,215,0,0.4), 0 12px 44px rgba(0,0,0,0.3)',
         }}
       >
         <img

@@ -45,20 +45,20 @@ export default function PageWelcome({ onNext }) {
 
       <FloatingShapes />
 
-      {/* Hero — first viewport */}
+      {/* Single-viewport hero */}
       <section
-        className="relative z-20 flex flex-col items-center justify-center px-8 text-center py-16"
+        className="relative z-20 flex flex-col items-center justify-center px-6 text-center py-10 w-full"
         style={{ minHeight: '100vh' }}
       >
         {/* cake (long-press for easter egg) */}
         <div
           ref={cakeRef}
           data-no-burst="true"
-          className="animate-bounce-slow delay-100 mb-6 select-none"
+          className="animate-bounce-slow delay-100 mb-3 select-none"
           style={{ touchAction: 'manipulation', cursor: 'pointer' }}
           aria-label="Birthday cake. Long-press for a surprise."
         >
-          <span style={{ fontSize: 'clamp(4rem, 12vw, 7rem)', display: 'inline-block' }}>
+          <span style={{ fontSize: 'clamp(2.8rem, 9vw, 4.5rem)', display: 'inline-block' }}>
             {secret ? '🎁' : '🎂'}
           </span>
         </div>
@@ -71,14 +71,14 @@ export default function PageWelcome({ onNext }) {
           className="animate-glowText"
           style={{
             fontFamily: "'Pacifico', cursive",
-            fontSize: 'clamp(2.8rem, 10vw, 6rem)',
+            fontSize: 'clamp(2rem, 8vw, 4rem)',
             color: '#fff',
             lineHeight: 1.1,
             textShadow: '0 4px 24px rgba(255,100,180,0.6)',
           }}
         />
 
-        <div className="relative mt-3 inline-block">
+        <div className="relative mt-1 inline-block">
           <LetterReveal
             as="h2"
             text="Salma! 🌸"
@@ -86,7 +86,7 @@ export default function PageWelcome({ onNext }) {
             delay={550}
             style={{
               fontFamily: "'Pacifico', cursive",
-              fontSize: 'clamp(2.4rem, 9vw, 5rem)',
+              fontSize: 'clamp(1.8rem, 7vw, 3.4rem)',
               color: '#FFD6EC',
               textShadow: '0 4px 20px rgba(255,150,200,0.5)',
             }}
@@ -97,101 +97,66 @@ export default function PageWelcome({ onNext }) {
         </div>
 
         {/* sparkle divider */}
-        <div className="animate-fadeInUp delay-700 flex items-center gap-3 mt-10 mb-8">
-          <span className="animate-twinkle text-2xl">✨</span>
-          <div style={{ width: 80, height: 2, background: 'rgba(255,255,255,0.45)', borderRadius: 2 }} />
-          <span className="animate-twinkle delay-300 text-2xl">💖</span>
-          <div style={{ width: 80, height: 2, background: 'rgba(255,255,255,0.45)', borderRadius: 2 }} />
-          <span className="animate-twinkle delay-600 text-2xl">✨</span>
+        <div className="animate-fadeInUp delay-700 flex items-center gap-3 mt-5 mb-4">
+          <span className="animate-twinkle text-xl">✨</span>
+          <div style={{ width: 60, height: 2, background: 'rgba(255,255,255,0.45)', borderRadius: 2 }} />
+          <span className="animate-twinkle delay-300 text-xl">💖</span>
+          <div style={{ width: 60, height: 2, background: 'rgba(255,255,255,0.45)', borderRadius: 2 }} />
+          <span className="animate-twinkle delay-600 text-xl">✨</span>
         </div>
 
-        <p
-          className="animate-fadeInUp delay-1000"
-          style={{
-            fontFamily: "'Nunito', sans-serif",
-            fontSize: 'clamp(1rem, 3vw, 1.3rem)',
-            color: 'rgba(255,255,255,0.82)',
-            fontWeight: 700,
-            letterSpacing: '0.08em',
-            textTransform: 'uppercase',
-          }}
-        >
-          🎊 Wishing you the most magical day! 🎊
-        </p>
-
-        {/* secret reveal under cake */}
-        <div
-          aria-hidden={!secret}
-          style={{
-            marginTop: '1.5rem',
-            opacity: secret ? 1 : 0,
-            transform: secret ? 'translateY(0) scale(1)' : 'translateY(8px) scale(0.95)',
-            transition: 'all 500ms cubic-bezier(0.34,1.56,0.64,1)',
-            pointerEvents: secret ? 'auto' : 'none',
-          }}
-        >
-          <div
-            className="glass rounded-full px-5 py-2 font-extrabold text-white text-sm flex items-center gap-2"
-            style={{ boxShadow: '0 8px 24px rgba(0,0,0,0.25)' }}
-          >
-            <span className="text-lg">💌</span>
-            made for you with love
-          </div>
-        </div>
-
-        {/* scroll hint */}
-        <div
-          ref={hintRef}
-          className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center"
-          style={{
-            opacity: hintIn ? 1 : 0,
-            transition: 'opacity 600ms 1.4s',
-          }}
-        >
-          <span className="text-white/70 text-xs font-bold tracking-widest uppercase mb-1">
-            scroll
-          </span>
-          <span className="text-white text-2xl animate-scroll-hint" aria-hidden="true">⌄</span>
-        </div>
-      </section>
-
-      {/* Scroll-reveal note */}
-      <section
-        className="relative z-20 flex flex-col items-center justify-start px-8 pt-12 pb-20 w-full"
-        style={{ minHeight: '50vh' }}
-      >
+        {/* note */}
         <div
           ref={noteRef}
-          className="glass rounded-3xl px-8 py-8 max-w-md text-center"
+          className="glass rounded-3xl px-6 py-5 max-w-sm text-center mt-2"
           style={{
             boxShadow: '0 20px 60px rgba(0,0,0,0.25)',
-            transform: noteIn ? 'translateY(0) rotate(-1.5deg)' : 'translateY(40px) rotate(-3deg)',
+            transform: noteIn ? 'translateY(0) rotate(-1.5deg)' : 'translateY(20px) rotate(-3deg)',
             opacity: noteIn ? 1 : 0,
-            transition: 'all 800ms cubic-bezier(0.22,1,0.36,1)',
+            transition: 'all 700ms cubic-bezier(0.22,1,0.36,1)',
           }}
         >
-          <span className="text-4xl block mb-3">💌</span>
           <p
-            className="font-bold leading-relaxed text-white/95"
-            style={{ fontSize: '1rem' }}
+            className="font-bold leading-snug text-white/95"
+            style={{ fontSize: '0.9rem' }}
           >
-            This little corner of the internet was made just for you. Tap, scroll, shake — every
-            page hides a tiny surprise. ✨
+            tap, scroll, shake — every page hides a tiny surprise ✨
           </p>
-          <p className="mt-4 text-xs uppercase tracking-widest text-white/60 font-extrabold">
-            psst — try long-pressing the cake 🎂
+          <p className="mt-2 text-[10px] uppercase tracking-widest text-white/60 font-extrabold">
+            psst — long-press the cake 🎂
           </p>
         </div>
 
         <button
           onClick={onNext}
-          className="btn-primary btn-gold animate-pulse-glow mt-12"
-          style={{ fontSize: 'clamp(1rem, 3.5vw, 1.25rem)', padding: '0.95rem 2.6rem' }}
+          className="btn-primary btn-gold animate-pulse-glow mt-6"
+          style={{ fontSize: 'clamp(0.95rem, 3.2vw, 1.15rem)', padding: '0.85rem 2.2rem' }}
         >
           Open Your Surprise 🎁
         </button>
 
-        <div className="flex gap-3 mt-10">
+        {/* secret reveal */}
+        <div
+          aria-hidden={!secret}
+          style={{
+            marginTop: '0.75rem',
+            opacity: secret ? 1 : 0,
+            transform: secret ? 'translateY(0) scale(1)' : 'translateY(8px) scale(0.95)',
+            transition: 'all 500ms cubic-bezier(0.34,1.56,0.64,1)',
+            pointerEvents: secret ? 'auto' : 'none',
+            height: secret ? 'auto' : 0,
+          }}
+        >
+          <div
+            className="glass rounded-full px-4 py-1.5 font-extrabold text-white text-xs flex items-center gap-2"
+            style={{ boxShadow: '0 8px 24px rgba(0,0,0,0.25)' }}
+          >
+            <span className="text-base">💌</span>
+            made for you with love
+          </div>
+        </div>
+
+        <div ref={hintRef} className="flex gap-3 mt-6" style={{ opacity: hintIn ? 1 : 0, transition: 'opacity 600ms' }}>
           <div style={{ width: 28, height: 8, borderRadius: 4, background: '#fff' }} />
           <div style={{ width: 8, height: 8, borderRadius: '50%', background: 'rgba(255,255,255,0.4)' }} />
           <div style={{ width: 8, height: 8, borderRadius: '50%', background: 'rgba(255,255,255,0.4)' }} />
