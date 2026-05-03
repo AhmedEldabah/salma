@@ -47,14 +47,14 @@ export default function PageWelcome({ onNext }) {
 
       {/* Hero — first viewport */}
       <section
-        className="relative z-20 flex flex-col items-center justify-center px-10 text-center gap-6 py-24"
+        className="relative z-20 flex flex-col items-center justify-center px-8 text-center py-16"
         style={{ minHeight: '100vh' }}
       >
         {/* cake (long-press for easter egg) */}
         <div
           ref={cakeRef}
           data-no-burst="true"
-          className="animate-bounce-slow delay-100 mb-12 select-none"
+          className="animate-bounce-slow delay-100 mb-6 select-none"
           style={{ touchAction: 'manipulation', cursor: 'pointer' }}
           aria-label="Birthday cake. Long-press for a surprise."
         >
@@ -97,7 +97,7 @@ export default function PageWelcome({ onNext }) {
         </div>
 
         {/* sparkle divider */}
-        <div className="animate-fadeInUp delay-700 flex items-center gap-6 mt-16 mb-14">
+        <div className="animate-fadeInUp delay-700 flex items-center gap-3 mt-10 mb-8">
           <span className="animate-twinkle text-2xl">✨</span>
           <div style={{ width: 80, height: 2, background: 'rgba(255,255,255,0.45)', borderRadius: 2 }} />
           <span className="animate-twinkle delay-300 text-2xl">💖</span>
@@ -157,12 +157,12 @@ export default function PageWelcome({ onNext }) {
 
       {/* Scroll-reveal note */}
       <section
-        className="relative z-20 flex flex-col items-center justify-center px-10 py-28 w-full gap-16"
+        className="relative z-20 flex flex-col items-center justify-start px-8 pt-12 pb-20 w-full"
         style={{ minHeight: '50vh' }}
       >
         <div
           ref={noteRef}
-          className="glass rounded-3xl px-12 py-16 max-w-md text-center"
+          className="glass rounded-3xl px-8 py-8 max-w-md text-center"
           style={{
             boxShadow: '0 20px 60px rgba(0,0,0,0.25)',
             transform: noteIn ? 'translateY(0) rotate(-1.5deg)' : 'translateY(40px) rotate(-3deg)',
@@ -185,13 +185,13 @@ export default function PageWelcome({ onNext }) {
 
         <button
           onClick={onNext}
-          className="btn-primary btn-gold animate-pulse-glow mt-4"
+          className="btn-primary btn-gold animate-pulse-glow mt-12"
           style={{ fontSize: 'clamp(1rem, 3.5vw, 1.25rem)', padding: '0.95rem 2.6rem' }}
         >
           Open Your Surprise 🎁
         </button>
 
-        <div className="flex gap-4 mt-8">
+        <div className="flex gap-3 mt-10">
           <div style={{ width: 28, height: 8, borderRadius: 4, background: '#fff' }} />
           <div style={{ width: 8, height: 8, borderRadius: '50%', background: 'rgba(255,255,255,0.4)' }} />
           <div style={{ width: 8, height: 8, borderRadius: '50%', background: 'rgba(255,255,255,0.4)' }} />

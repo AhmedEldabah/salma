@@ -68,7 +68,7 @@ function WishCard({ wish, index }) {
         onClick={handleTap}
         data-no-burst="true"
         key={bumps}
-        className="glass rounded-3xl px-12 py-14 w-full text-left tap-card animate-card-tap relative overflow-hidden"
+        className="glass rounded-3xl px-8 py-7 w-full text-left tap-card animate-card-tap relative overflow-hidden"
         style={{
           background: wish.gradient,
           boxShadow: '0 8px 32px rgba(0,0,0,0.15)',
@@ -91,7 +91,7 @@ function WishCard({ wish, index }) {
           />
         ))}
 
-        <div className="flex items-start gap-6 relative">
+        <div className="flex items-start gap-4 relative">
           <span
             className="animate-bounce-slow flex-shrink-0"
             style={{ fontSize: '2.2rem', animationDelay: `${index * 0.3}s` }}
@@ -99,7 +99,7 @@ function WishCard({ wish, index }) {
             {wish.icon}
           </span>
           <div className="flex-1">
-            <h3 className="font-extrabold mb-3 text-white" style={{ fontSize: '1.05rem' }}>
+            <h3 className="font-extrabold mb-2 text-white" style={{ fontSize: '1.05rem' }}>
               {wish.title}
             </h3>
             <p
@@ -163,8 +163,8 @@ export default function PageWishes({ onNext, onBack }) {
         </span>
       ))}
 
-      <main className="relative z-20 flex flex-col items-center justify-center flex-1 w-full max-w-md px-10 py-32">
-        <div className="text-center mb-20 animate-fadeInUp">
+      <main className="relative z-20 flex flex-col items-center justify-start flex-1 w-full max-w-md px-8 pt-20 pb-16">
+        <div className="text-center mb-10 animate-fadeInUp">
           <span className="text-5xl animate-heartbeat block mb-4">💌</span>
           <div className="relative inline-block">
             <LetterReveal
@@ -183,20 +183,20 @@ export default function PageWishes({ onNext, onBack }) {
             </div>
           </div>
           <p
-            className="mt-8 font-semibold text-white/75"
+            className="mt-6 font-semibold text-white/75"
             style={{ fontSize: '0.9rem', letterSpacing: '0.05em' }}
           >
             tap each card for a tiny secret 🌸
           </p>
         </div>
 
-        <div className="flex flex-col gap-16 w-full mb-20">
+        <div className="flex flex-col gap-6 w-full mb-12">
           {WISHES.map((w, i) => (
             <WishCard key={w.title} wish={w} index={i} />
           ))}
         </div>
 
-        <div className="animate-fadeInUp delay-700 flex gap-16 mt-6">
+        <div className="animate-fadeInUp delay-700 flex gap-6">
           <button
             onClick={onBack}
             className="btn-primary"
@@ -209,7 +209,7 @@ export default function PageWishes({ onNext, onBack }) {
           </button>
         </div>
 
-        <div className="animate-fadeInUp delay-800 flex gap-3 mt-12">
+        <div className="animate-fadeInUp delay-800 flex gap-3 mt-10">
           <div style={{ width: 8, height: 8, borderRadius: '50%', background: 'rgba(255,255,255,0.4)' }} />
           <div style={{ width: 8, height: 8, borderRadius: '50%', background: 'rgba(255,255,255,0.4)' }} />
           <div style={{ width: 28, height: 8, borderRadius: 4, background: '#fff' }} />

@@ -34,16 +34,16 @@ export default function PagePhoto({ onNext, onBack }) {
         <Bunting />
       </div>
 
-      <main className="relative z-20 flex flex-col items-center justify-center flex-1 px-10 pt-20 pb-28 gap-4">
+      <main className="relative z-20 flex flex-col items-center justify-start flex-1 px-8 pt-12 pb-16">
         <p
-          className="animate-fadeInUp delay-100 mb-10 font-extrabold tracking-widest uppercase"
+          className="animate-fadeInUp delay-100 mb-8 font-extrabold tracking-widest uppercase"
           style={{ color: 'rgba(255,255,255,0.85)', fontSize: 'clamp(0.75rem, 2.5vw, 0.95rem)' }}
         >
           ✨ Today's Star ✨
         </p>
 
         {/* tap-to-pop balloons + photo */}
-        <div className="flex items-center justify-center gap-12 sm:gap-20 mb-16 mt-6 animate-fadeInUp delay-200">
+        <div className="flex items-center justify-center gap-6 sm:gap-12 mb-8 animate-fadeInUp delay-200">
           <div className="flex flex-col items-center gap-3">
             <PopBalloon
               color={BALLOON_PAIRS[0].color}
@@ -99,14 +99,14 @@ export default function PagePhoto({ onNext, onBack }) {
           </div>
         </div>
 
-        <p className="text-white/70 font-bold text-xs uppercase tracking-widest animate-fadeInUp delay-400 mb-14">
+        <p className="text-white/70 font-bold text-xs uppercase tracking-widest animate-fadeInUp delay-400 mb-8">
           tap a balloon 🎈
         </p>
 
         {/* name card with hand-drawn underline */}
-        <div className="animate-fadeInUp delay-400 mb-16">
+        <div className="animate-fadeInUp delay-400 mb-10">
           <div
-            className="glass rounded-3xl px-12 py-8 text-center relative"
+            className="glass rounded-3xl px-10 py-6 text-center relative"
             style={{ boxShadow: '0 8px 32px rgba(0,0,0,0.15)' }}
           >
             <h2
@@ -122,18 +122,18 @@ export default function PagePhoto({ onNext, onBack }) {
             <div className="absolute left-1/2 -translate-x-1/2" style={{ width: '60%', bottom: 4 }}>
               <HandDrawnUnderline color="#FFD700" delay={600} stroke={4} height={10} />
             </div>
-            <p className="mt-6 font-bold tracking-widest uppercase text-white/75 text-xs">
+            <p className="mt-3 font-bold tracking-widest uppercase text-white/75 text-xs">
               The birthday queen 👑
             </p>
           </div>
         </div>
 
         {/* trait chips — viewport-triggered staggered reveal */}
-        <div ref={traitsRef} className="flex gap-6 mb-20 flex-wrap justify-center max-w-md">
+        <div ref={traitsRef} className="flex gap-3 mb-12 flex-wrap justify-center max-w-md">
           {TRAITS.map((t, i) => (
             <span
               key={t.label}
-              className="glass tap-card px-6 py-3 rounded-full font-bold text-white text-sm flex items-center gap-2"
+              className="glass tap-card px-4 py-2 rounded-full font-bold text-white text-sm flex items-center gap-2"
               style={{
                 opacity: traitsIn ? 1 : 0,
                 transform: traitsIn ? 'translateY(0) scale(1)' : 'translateY(16px) scale(0.85)',
@@ -146,7 +146,7 @@ export default function PagePhoto({ onNext, onBack }) {
           ))}
         </div>
 
-        <div className="animate-fadeInUp delay-700 flex gap-16">
+        <div className="animate-fadeInUp delay-700 flex gap-6">
           <button
             onClick={onBack}
             className="btn-primary"
@@ -159,7 +159,7 @@ export default function PagePhoto({ onNext, onBack }) {
           </button>
         </div>
 
-        <div className="animate-fadeInUp delay-800 flex gap-4 mt-16">
+        <div className="animate-fadeInUp delay-800 flex gap-3 mt-10">
           <div style={{ width: 8, height: 8, borderRadius: '50%', background: 'rgba(255,255,255,0.4)' }} />
           <div style={{ width: 28, height: 8, borderRadius: 4, background: '#fff' }} />
           <div style={{ width: 8, height: 8, borderRadius: '50%', background: 'rgba(255,255,255,0.4)' }} />
