@@ -128,7 +128,7 @@ export default function PageLove({ onBack, onRestart }) {
           </button>
         )}
 
-        <div className="flex flex-col items-center gap-4 w-full animate-fadeInUp delay-400">
+        <div className="flex flex-col items-center gap-5 w-full animate-fadeInUp delay-400">
           <button
             onClick={() => {
               setLoved(true)
@@ -183,7 +183,7 @@ export default function PageLove({ onBack, onRestart }) {
         </div>
 
         {/* tap-to-pop bottom balloons */}
-        <div className="flex justify-center gap-2 mt-8 animate-fadeInUp delay-600">
+        <div className="flex justify-center gap-3 mt-8 animate-fadeInUp delay-600">
           {BOTTOM_BALLOONS.map((b, i) => (
             <PopBalloon
               key={i}
@@ -194,7 +194,7 @@ export default function PageLove({ onBack, onRestart }) {
           ))}
         </div>
 
-        <div className="animate-fadeInUp delay-700 flex gap-4 mt-6">
+        <div className="animate-fadeInUp delay-700 flex gap-6 mt-8">
           <button
             onClick={onBack}
             className="btn-primary"

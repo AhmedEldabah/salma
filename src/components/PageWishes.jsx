@@ -190,13 +190,13 @@ export default function PageWishes({ onNext, onBack }) {
           </p>
         </div>
 
-        <div className="flex flex-col gap-4 w-full mb-8">
+        <div className="flex flex-col gap-5 w-full mb-8">
           {WISHES.map((w, i) => (
             <WishCard key={w.title} wish={w} index={i} />
           ))}
         </div>
 
-        <div className="animate-fadeInUp delay-700 flex gap-4">
+        <div className="animate-fadeInUp delay-700 flex gap-6">
           <button
             onClick={onBack}
             className="btn-primary"

@@ -78,7 +78,7 @@ export default function PageWelcome({ onNext }) {
           }}
         />
 
-        <div className="relative mt-1 inline-block">
+        <div className="relative mt-3 inline-block">
           <LetterReveal
             as="h2"
             text="Salma! 🌸"
@@ -157,8 +157,8 @@ export default function PageWelcome({ onNext }) {
 
       {/* Scroll-reveal note */}
       <section
-        className="relative z-20 flex flex-col items-center justify-center px-6 py-16 w-full"
-        style={{ minHeight: '70vh' }}
+        className="relative z-20 flex flex-col items-center justify-center px-6 py-10 w-full"
+        style={{ minHeight: '50vh' }}
       >
         <div
           ref={noteRef}
