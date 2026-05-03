@@ -34,7 +34,7 @@ export default function PagePhoto({ onNext, onBack }) {
         <Bunting />
       </div>
 
-      <main className="relative z-20 flex flex-col items-center flex-1 px-4 pt-4 pb-10">
+      <main className="relative z-20 flex flex-col items-center justify-center flex-1 px-4 pt-4 pb-10">
         <p
           className="animate-fadeInUp delay-100 mb-4 font-extrabold tracking-widest uppercase"
           style={{ color: 'rgba(255,255,255,0.85)', fontSize: 'clamp(0.75rem, 2.5vw, 0.95rem)' }}
@@ -43,7 +43,7 @@ export default function PagePhoto({ onNext, onBack }) {
         </p>
 
         {/* tap-to-pop balloons + photo */}
-        <div className="flex items-end justify-center gap-4 sm:gap-12 mb-6 animate-fadeInUp delay-200">
+        <div className="flex items-center justify-center gap-4 sm:gap-12 mb-6 animate-fadeInUp delay-200">
           <div className="flex flex-col items-center gap-3">
             <PopBalloon
               color={BALLOON_PAIRS[0].color}
@@ -80,7 +80,7 @@ export default function PagePhoto({ onNext, onBack }) {
               }}
             >
               <span style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 900, color: '#fff', fontSize: '0.95rem' }}>
-                <CountUp to={3} duration={1100} />🎂
+                <CountUp to={20} duration={1100} />🎂
               </span>
             </div>
           </div>
@@ -122,8 +122,8 @@ export default function PagePhoto({ onNext, onBack }) {
             <div className="absolute left-1/2 -translate-x-1/2" style={{ width: '60%', bottom: 4 }}>
               <HandDrawnUnderline color="#FFD700" delay={600} stroke={4} height={10} />
             </div>
-            <p className="mt-1 font-bold tracking-widest uppercase text-white/75 text-xs">
-              Our precious little princess
+            <p className="mt-2 font-bold tracking-widest uppercase text-white/75 text-xs">
+              The birthday queen 👑
             </p>
           </div>
         </div>
