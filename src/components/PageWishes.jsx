@@ -7,7 +7,7 @@ const WISHES = [
   {
     icon: '🌸',
     title: 'Joy & Happiness',
-    text: 'random walks in Zamalek',
+    text: 'random walks fel zamalek',
     secret: 'You make everyone smile 💛',
     gradient: 'linear-gradient(135deg, rgba(255,64,129,0.25), rgba(255,105,180,0.15))',
   },
@@ -21,7 +21,7 @@ const WISHES = [
   {
     icon: '💝',
     title: 'Love All Around',
-    text: 'sharing laughs and secrets',
+    text: 'talking shit about every human being',
     secret: 'Loved beyond measure 💖',
     gradient: 'linear-gradient(135deg, rgba(251,146,60,0.25), rgba(255,64,129,0.15))',
   },
@@ -68,7 +68,7 @@ function WishCard({ wish, index }) {
         onClick={handleTap}
         data-no-burst="true"
         key={bumps}
-        className="glass rounded-3xl px-8 py-7 w-full text-left tap-card animate-card-tap relative overflow-hidden"
+        className="glass rounded-3xl px-10 py-10 w-full text-left tap-card animate-card-tap relative overflow-hidden"
         style={{
           background: wish.gradient,
           boxShadow: '0 8px 32px rgba(0,0,0,0.15)',
@@ -163,13 +163,13 @@ export default function PageWishes({ onNext, onBack }) {
         </span>
       ))}
 
-      <main className="relative z-20 flex flex-col items-center justify-center flex-1 w-full max-w-md px-6 py-16">
-        <div className="text-center mb-12 animate-fadeInUp">
+      <main className="relative z-20 flex flex-col items-center justify-center flex-1 w-full max-w-md px-8 py-24">
+        <div className="text-center mb-16 animate-fadeInUp">
           <span className="text-5xl animate-heartbeat block mb-4">💌</span>
           <div className="relative inline-block">
             <LetterReveal
               as="h2"
-              text="To Many More! 🥂"
+              text="too manyy moree"
               stagger={40}
               style={{
                 fontFamily: "'Pacifico', cursive",
@@ -190,13 +190,13 @@ export default function PageWishes({ onNext, onBack }) {
           </p>
         </div>
 
-        <div className="flex flex-col gap-8 w-full mb-12">
+        <div className="flex flex-col gap-12 w-full mb-16">
           {WISHES.map((w, i) => (
             <WishCard key={w.title} wish={w} index={i} />
           ))}
         </div>
 
-        <div className="animate-fadeInUp delay-700 flex gap-8">
+        <div className="animate-fadeInUp delay-700 flex gap-12 mt-4">
           <button
             onClick={onBack}
             className="btn-primary"
