@@ -7,7 +7,7 @@ const WISHES = [
   {
     icon: '🌸',
     title: 'Joy & Happiness',
-    text: 'random walks fel zamalek',
+    text: 'random walks in Zamalek',
     secret: 'You make everyone smile 💛',
     gradient: 'linear-gradient(135deg, rgba(255,64,129,0.25), rgba(255,105,180,0.15))',
   },
@@ -21,7 +21,7 @@ const WISHES = [
   {
     icon: '💝',
     title: 'Love All Around',
-    text: 'talking shit about every human being',
+    text: 'sharing laughs and secrets',
     secret: 'Loved beyond measure 💖',
     gradient: 'linear-gradient(135deg, rgba(251,146,60,0.25), rgba(255,64,129,0.15))',
   },
@@ -163,13 +163,13 @@ export default function PageWishes({ onNext, onBack }) {
         </span>
       ))}
 
-      <main className="relative z-20 flex flex-col items-center w-full max-w-md px-6 py-16">
+      <main className="relative z-20 flex flex-col items-center justify-center flex-1 w-full max-w-md px-6 py-16">
         <div className="text-center mb-12 animate-fadeInUp">
           <span className="text-5xl animate-heartbeat block mb-4">💌</span>
           <div className="relative inline-block">
             <LetterReveal
               as="h2"
-              text="too manyy moree"
+              text="To Many More! 🥂"
               stagger={40}
               style={{
                 fontFamily: "'Pacifico', cursive",
