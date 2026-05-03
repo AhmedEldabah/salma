@@ -57,8 +57,8 @@ export default function PageLove({ onBack, onRestart }) {
     >
       <Confetti count={burst ? 90 : 0} key={burst ? 'burst' : 'idle'} />
 
-      <main className="relative z-20 flex flex-col items-center justify-center flex-1 w-full max-w-sm px-6 py-16">
-        <div className="text-center mb-6 animate-fadeInUp">
+      <main className="relative z-20 flex flex-col items-center justify-center flex-1 w-full max-w-sm px-8 py-24">
+        <div className="text-center mb-12 animate-fadeInUp">
           <span
             className={`block mb-3 ${loved ? 'animate-heartbeat' : 'animate-wiggle'}`}
             style={{ fontSize: 'clamp(3.5rem, 12vw, 5.5rem)' }}
@@ -84,7 +84,7 @@ export default function PageLove({ onBack, onRestart }) {
         </div>
 
         {/* scratch-to-reveal hidden message */}
-        <div className="animate-fadeInUp delay-200 mb-10">
+        <div className="animate-fadeInUp delay-200 mb-16">
           <ScratchReveal width={300} height={130} hint="Scratch for a secret 💛">
             <p
               className="font-bold leading-snug px-2"
@@ -94,18 +94,18 @@ export default function PageLove({ onBack, onRestart }) {
                 fontSize: '1.15rem',
               }}
             >
-              to my favorite person ✨
+              to my favorite gazma ✨
             </p>
           </ScratchReveal>
         </div>
 
         {/* main message card */}
         <div
-          className="glass rounded-3xl px-8 py-8 text-center w-full mb-10 animate-fadeInUp delay-300"
+          className="glass rounded-3xl px-10 py-12 text-center w-full mb-16 animate-fadeInUp delay-300"
           style={{ boxShadow: '0 8px 32px rgba(0,0,0,0.2)' }}
         >
           <p className="font-bold leading-relaxed text-white/95" style={{ fontSize: '1rem' }}>
-            can't imagine my life without our friendship and can't wait to make more memories together and share more sweet treats 🍬
+            can't imagine my life without our friendship and can't wait to make more memories together and share more sweet treats
           </p>
         </div>
 
@@ -117,7 +117,7 @@ export default function PageLove({ onBack, onRestart }) {
               triggerConfetti()
               setShakeHint(false)
             }}
-            className="glass rounded-full px-4 py-2 text-white font-extrabold text-sm flex items-center gap-2 mb-4 animate-fadeInUp delay-400"
+            className="glass rounded-full px-6 py-3 text-white font-extrabold text-sm flex items-center gap-3 mb-10 animate-fadeInUp delay-400"
             style={{ boxShadow: '0 6px 20px rgba(0,0,0,0.2)' }}
             data-no-burst="true"
           >
@@ -126,7 +126,7 @@ export default function PageLove({ onBack, onRestart }) {
           </button>
         )}
 
-        <div className="flex flex-col items-center gap-8 w-full animate-fadeInUp delay-400">
+        <div className="flex flex-col items-center gap-12 w-full animate-fadeInUp delay-400">
           <button
             onClick={() => {
               setLoved(true)
@@ -144,7 +144,7 @@ export default function PageLove({ onBack, onRestart }) {
               transition: 'all 0.3s ease',
             }}
           >
-            {loved ? '💖 I love you so much! 💖' : '💕 love you salma 💕'}
+            {loved ? '💖 love you salma 💖' : '💕 love you salma 💕'}
           </button>
 
           <button
@@ -161,7 +161,7 @@ export default function PageLove({ onBack, onRestart }) {
 
           {/* age reveal with count-up */}
           <div
-            className="glass w-full rounded-2xl py-5 text-center"
+            className="glass w-full rounded-2xl py-8 px-8 text-center"
             style={{ boxShadow: '0 4px 16px rgba(0,0,0,0.15)' }}
           >
             <p
@@ -174,14 +174,14 @@ export default function PageLove({ onBack, onRestart }) {
             >
               🎂 <CountUp to={20} duration={1400} /> years old!!! 🎂
             </p>
-            <p className="font-bold mt-1 text-white/70 text-sm">
+            <p className="font-bold mt-3 text-white/70 text-sm">
               <CountUp to={20} duration={1400} /> wonderful years of magic ✨
             </p>
           </div>
         </div>
 
         {/* tap-to-pop bottom balloons */}
-        <div className="flex justify-center gap-6 mt-12 animate-fadeInUp delay-600">
+        <div className="flex justify-center gap-10 mt-16 animate-fadeInUp delay-600">
           {BOTTOM_BALLOONS.map((b, i) => (
             <PopBalloon
               key={i}
@@ -192,7 +192,7 @@ export default function PageLove({ onBack, onRestart }) {
           ))}
         </div>
 
-        <div className="animate-fadeInUp delay-700 flex gap-8 mt-10">
+        <div className="animate-fadeInUp delay-700 flex gap-12 mt-16">
           <button
             onClick={onBack}
             className="btn-primary"
@@ -209,7 +209,7 @@ export default function PageLove({ onBack, onRestart }) {
           </button>
         </div>
 
-        <div className="animate-fadeInUp delay-800 flex gap-2 mt-8">
+        <div className="animate-fadeInUp delay-800 flex gap-3 mt-12">
           <div style={{ width: 8, height: 8, borderRadius: '50%', background: 'rgba(255,255,255,0.4)' }} />
           <div style={{ width: 8, height: 8, borderRadius: '50%', background: 'rgba(255,255,255,0.4)' }} />
           <div style={{ width: 8, height: 8, borderRadius: '50%', background: 'rgba(255,255,255,0.4)' }} />
