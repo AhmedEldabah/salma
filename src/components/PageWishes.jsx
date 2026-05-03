@@ -7,21 +7,21 @@ const WISHES = [
   {
     icon: '🌸',
     title: 'Joy & Happiness',
-    text: 'May every single day bring you joy, laughter, and moments that make your heart sing!',
+    text: 'random walks fel zamalek',
     secret: 'You make everyone smile 💛',
     gradient: 'linear-gradient(135deg, rgba(255,64,129,0.25), rgba(255,105,180,0.15))',
   },
   {
     icon: '✨',
     title: 'Dreams Come True',
-    text: 'May all your beautiful dreams take flight and the stars align to make every wish come true.',
+    text: 'trying new food',
     secret: 'The world is yours, little star ⭐',
     gradient: 'linear-gradient(135deg, rgba(124,58,237,0.25), rgba(236,72,153,0.15))',
   },
   {
     icon: '💝',
     title: 'Love All Around',
-    text: 'May you always feel the warmth of love from everyone around you — today and forever.',
+    text: 'talking shit about every human being',
     secret: 'Loved beyond measure 💖',
     gradient: 'linear-gradient(135deg, rgba(251,146,60,0.25), rgba(255,64,129,0.15))',
   },
@@ -68,7 +68,7 @@ function WishCard({ wish, index }) {
         onClick={handleTap}
         data-no-burst="true"
         key={bumps}
-        className="glass rounded-3xl px-6 py-5 w-full text-left tap-card animate-card-tap relative overflow-hidden"
+        className="glass rounded-3xl px-8 py-7 w-full text-left tap-card animate-card-tap relative overflow-hidden"
         style={{
           background: wish.gradient,
           boxShadow: '0 8px 32px rgba(0,0,0,0.15)',
@@ -163,13 +163,13 @@ export default function PageWishes({ onNext, onBack }) {
         </span>
       ))}
 
-      <main className="relative z-20 flex flex-col items-center w-full max-w-md px-5 py-10">
-        <div className="text-center mb-8 animate-fadeInUp">
-          <span className="text-5xl animate-heartbeat block mb-3">💌</span>
+      <main className="relative z-20 flex flex-col items-center w-full max-w-md px-6 py-16">
+        <div className="text-center mb-12 animate-fadeInUp">
+          <span className="text-5xl animate-heartbeat block mb-4">💌</span>
           <div className="relative inline-block">
             <LetterReveal
               as="h2"
-              text="Our Wishes For You"
+              text="too manyy moree"
               stagger={40}
               style={{
                 fontFamily: "'Pacifico', cursive",
@@ -190,13 +190,13 @@ export default function PageWishes({ onNext, onBack }) {
           </p>
         </div>
 
-        <div className="flex flex-col gap-5 w-full mb-8">
+        <div className="flex flex-col gap-8 w-full mb-12">
           {WISHES.map((w, i) => (
             <WishCard key={w.title} wish={w} index={i} />
           ))}
         </div>
 
-        <div className="animate-fadeInUp delay-700 flex gap-6">
+        <div className="animate-fadeInUp delay-700 flex gap-8">
           <button
             onClick={onBack}
             className="btn-primary"

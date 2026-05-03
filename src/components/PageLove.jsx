@@ -57,7 +57,7 @@ export default function PageLove({ onBack, onRestart }) {
     >
       <Confetti count={burst ? 90 : 0} key={burst ? 'burst' : 'idle'} />
 
-      <main className="relative z-20 flex flex-col items-center w-full max-w-sm px-5 py-10">
+      <main className="relative z-20 flex flex-col items-center w-full max-w-sm px-6 py-16">
         <div className="text-center mb-6 animate-fadeInUp">
           <span
             className={`block mb-3 ${loved ? 'animate-heartbeat' : 'animate-wiggle'}`}
@@ -84,7 +84,7 @@ export default function PageLove({ onBack, onRestart }) {
         </div>
 
         {/* scratch-to-reveal hidden message */}
-        <div className="animate-fadeInUp delay-200 mb-6">
+        <div className="animate-fadeInUp delay-200 mb-10">
           <ScratchReveal width={300} height={130} hint="Scratch for a secret 💛">
             <p
               className="font-bold leading-snug px-2"
@@ -94,20 +94,18 @@ export default function PageLove({ onBack, onRestart }) {
                 fontSize: '1.15rem',
               }}
             >
-              You are our<br />favourite little human ✨
+              to my favorite gazma ✨
             </p>
           </ScratchReveal>
         </div>
 
         {/* main message card */}
         <div
-          className="glass rounded-3xl px-7 py-6 text-center w-full mb-6 animate-fadeInUp delay-300"
+          className="glass rounded-3xl px-8 py-8 text-center w-full mb-10 animate-fadeInUp delay-300"
           style={{ boxShadow: '0 8px 32px rgba(0,0,0,0.2)' }}
         >
           <p className="font-bold leading-relaxed text-white/95" style={{ fontSize: '1rem' }}>
-            Salma, you bring so much light and joy into our lives. 🌟<br />
-            Every smile you share makes our world a brighter place.<br />
-            Today is YOUR day — celebrate big! 🎉
+            can't imagine my life without our friendship and can't wait to make more memories together and share more sweet treats 🍬
           </p>
         </div>
 
@@ -128,7 +126,7 @@ export default function PageLove({ onBack, onRestart }) {
           </button>
         )}
 
-        <div className="flex flex-col items-center gap-5 w-full animate-fadeInUp delay-400">
+        <div className="flex flex-col items-center gap-8 w-full animate-fadeInUp delay-400">
           <button
             onClick={() => {
               setLoved(true)
@@ -146,7 +144,7 @@ export default function PageLove({ onBack, onRestart }) {
               transition: 'all 0.3s ease',
             }}
           >
-            {loved ? '💖 I love you so much! 💖' : '💕 I love you, Salma! 💕'}
+            {loved ? '💖 I love you so much! 💖' : '💕 love you salma 💕'}
           </button>
 
           <button
@@ -163,7 +161,7 @@ export default function PageLove({ onBack, onRestart }) {
 
           {/* age reveal with count-up */}
           <div
-            className="glass w-full rounded-2xl py-4 text-center"
+            className="glass w-full rounded-2xl py-5 text-center"
             style={{ boxShadow: '0 4px 16px rgba(0,0,0,0.15)' }}
           >
             <p
@@ -174,16 +172,16 @@ export default function PageLove({ onBack, onRestart }) {
                 fontSize: 'clamp(1.4rem, 5vw, 2rem)',
               }}
             >
-              🎂 Salma is <CountUp to={3} duration={1400} /> years old! 🎂
+              🎂 <CountUp to={20} duration={1400} /> years old!!! 🎂
             </p>
             <p className="font-bold mt-1 text-white/70 text-sm">
-              <CountUp to={3} duration={1400} /> wonderful years of magic ✨
+              <CountUp to={20} duration={1400} /> wonderful years of magic ✨
             </p>
           </div>
         </div>
 
         {/* tap-to-pop bottom balloons */}
-        <div className="flex justify-center gap-3 mt-8 animate-fadeInUp delay-600">
+        <div className="flex justify-center gap-6 mt-12 animate-fadeInUp delay-600">
           {BOTTOM_BALLOONS.map((b, i) => (
             <PopBalloon
               key={i}
@@ -194,7 +192,7 @@ export default function PageLove({ onBack, onRestart }) {
           ))}
         </div>
 
-        <div className="animate-fadeInUp delay-700 flex gap-6 mt-8">
+        <div className="animate-fadeInUp delay-700 flex gap-8 mt-10">
           <button
             onClick={onBack}
             className="btn-primary"
