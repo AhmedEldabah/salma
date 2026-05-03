@@ -3,12 +3,21 @@ export default function PhotoFrame() {
     <div className="relative flex items-center justify-center">
       {/* outer glow ring */}
       <div
+        className="absolute rounded-full animate-pulse-glow"
+        style={{
+          width: '168px',
+          height: '168px',
+          background: 'radial-gradient(circle, rgba(255,105,180,0.35) 0%, transparent 70%)',
+        }}
+      />
+      {/* decorative ring */}
+      <div
         className="absolute rounded-full"
         style={{
-          width: '160px',
-          height: '160px',
-          background: 'radial-gradient(circle, rgba(255,105,180,0.3) 0%, transparent 70%)',
-          animation: 'pulse 2.5s ease-in-out infinite',
+          width: '140px',
+          height: '140px',
+          border: '3px dashed rgba(255,255,255,0.45)',
+          animation: 'float 6s ease-in-out infinite',
         }}
       />
       {/* photo circle */}
@@ -17,21 +26,19 @@ export default function PhotoFrame() {
         style={{
           width: '120px',
           height: '120px',
-          border: '5px solid #FF69B4',
-          boxShadow: '0 0 0 4px #FFB6C1, 0 8px 32px rgba(255,105,180,0.4)',
-          background: 'linear-gradient(135deg, #FFE4E1 0%, #FFC0CB 100%)',
+          border: '5px solid rgba(255,255,255,0.9)',
+          boxShadow: '0 0 0 3px rgba(255,105,180,0.5), 0 10px 40px rgba(0,0,0,0.25)',
+          background: 'linear-gradient(135deg, rgba(255,228,225,0.8) 0%, rgba(255,182,193,0.8) 100%)',
         }}
       >
         {/* placeholder silhouette */}
-        <div className="flex flex-col items-center justify-end w-full h-full pb-2 opacity-40">
-          {/* head */}
+        <div className="flex flex-col items-center justify-end w-full h-full pb-2 opacity-50">
           <div
-            className="rounded-full bg-pink-400 mb-1"
+            className="rounded-full bg-pink-200 mb-1"
             style={{ width: '34px', height: '34px' }}
           />
-          {/* body */}
           <div
-            className="rounded-t-full bg-pink-400"
+            className="rounded-t-full bg-pink-200"
             style={{ width: '60px', height: '38px' }}
           />
         </div>
@@ -39,3 +46,4 @@ export default function PhotoFrame() {
     </div>
   )
 }
+
