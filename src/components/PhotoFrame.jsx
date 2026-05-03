@@ -3,10 +3,10 @@ export default function PhotoFrame() {
     <div className="relative flex items-center justify-center">
       {/* outer glow ring */}
       <div
-        className="absolute rounded-full animate-pulse-scale"
+        className="absolute rounded-full"
         style={{
-          width: '200px',
-          height: '200px',
+          width: '160px',
+          height: '160px',
           background: 'radial-gradient(circle, rgba(255,105,180,0.3) 0%, transparent 70%)',
           animation: 'pulse 2.5s ease-in-out infinite',
         }}
@@ -15,8 +15,8 @@ export default function PhotoFrame() {
       <div
         className="relative rounded-full flex items-center justify-center overflow-hidden"
         style={{
-          width: '160px',
-          height: '160px',
+          width: '120px',
+          height: '120px',
           border: '5px solid #FF69B4',
           boxShadow: '0 0 0 4px #FFB6C1, 0 8px 32px rgba(255,105,180,0.4)',
           background: 'linear-gradient(135deg, #FFE4E1 0%, #FFC0CB 100%)',
@@ -27,12 +27,12 @@ export default function PhotoFrame() {
           {/* head */}
           <div
             className="rounded-full bg-pink-400 mb-1"
-            style={{ width: '44px', height: '44px' }}
+            style={{ width: '34px', height: '34px' }}
           />
           {/* body */}
           <div
             className="rounded-t-full bg-pink-400"
-            style={{ width: '80px', height: '50px' }}
+            style={{ width: '60px', height: '38px' }}
           />
         </div>
       </div>
