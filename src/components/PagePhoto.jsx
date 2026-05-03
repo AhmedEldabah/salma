@@ -34,16 +34,16 @@ export default function PagePhoto({ onNext, onBack }) {
         <Bunting />
       </div>
 
-      <main className="relative z-20 flex flex-col items-center justify-center flex-1 px-8 pt-16 pb-24">
+      <main className="relative z-20 flex flex-col items-center justify-start flex-1 px-8 pt-8 pb-16">
         <p
-          className="animate-fadeInUp delay-100 mb-14 font-extrabold tracking-widest uppercase"
+          className="animate-fadeInUp delay-100 mb-6 font-extrabold tracking-widest uppercase"
           style={{ color: 'rgba(255,255,255,0.85)', fontSize: 'clamp(0.75rem, 2.5vw, 0.95rem)' }}
         >
           ✨ Today's Star ✨
         </p>
 
         {/* tap-to-pop balloons + photo */}
-        <div className="flex items-center justify-center gap-8 sm:gap-16 mb-14 animate-fadeInUp delay-200">
+        <div className="flex items-center justify-center gap-8 sm:gap-16 mb-8 animate-fadeInUp delay-200">
           <div className="flex flex-col items-center gap-3">
             <PopBalloon
               color={BALLOON_PAIRS[0].color}
@@ -99,12 +99,12 @@ export default function PagePhoto({ onNext, onBack }) {
           </div>
         </div>
 
-        <p className="text-white/70 font-bold text-xs uppercase tracking-widest animate-fadeInUp delay-400 mb-14">
+        <p className="text-white/70 font-bold text-xs uppercase tracking-widest animate-fadeInUp delay-400 mb-6">
           tap a balloon 🎈
         </p>
 
         {/* name card with hand-drawn underline */}
-        <div className="animate-fadeInUp delay-400 mb-16">
+        <div className="animate-fadeInUp delay-400 mb-8">
           <div
             className="glass rounded-3xl px-12 py-8 text-center relative"
             style={{ boxShadow: '0 8px 32px rgba(0,0,0,0.15)' }}
@@ -129,7 +129,7 @@ export default function PagePhoto({ onNext, onBack }) {
         </div>
 
         {/* trait chips — viewport-triggered staggered reveal */}
-        <div ref={traitsRef} className="flex gap-5 mb-18 flex-wrap justify-center max-w-md">
+        <div ref={traitsRef} className="flex gap-5 mb-8 flex-wrap justify-center max-w-md">
           {TRAITS.map((t, i) => (
             <span
               key={t.label}
@@ -146,7 +146,7 @@ export default function PagePhoto({ onNext, onBack }) {
           ))}
         </div>
 
-        <div className="animate-fadeInUp delay-700 flex gap-16">
+        <div className="animate-fadeInUp delay-700 flex gap-6">
           <button
             onClick={onBack}
             className="btn-primary"
@@ -159,7 +159,7 @@ export default function PagePhoto({ onNext, onBack }) {
           </button>
         </div>
 
-        <div className="animate-fadeInUp delay-800 flex gap-3 mt-16">
+        <div className="animate-fadeInUp delay-800 flex gap-3 mt-8">
           <div style={{ width: 8, height: 8, borderRadius: '50%', background: 'rgba(255,255,255,0.4)' }} />
           <div style={{ width: 28, height: 8, borderRadius: 4, background: '#fff' }} />
           <div style={{ width: 8, height: 8, borderRadius: '50%', background: 'rgba(255,255,255,0.4)' }} />
