@@ -65,17 +65,17 @@ export default function App() {
 
         {/* balloons + photo */}
         <div
-          className="flex items-end justify-center gap-4 sm:gap-10 mb-8 animate-fadeInUp"
+          className="flex items-end justify-center gap-2 sm:gap-10 mb-8 animate-fadeInUp"
           style={{ animationDelay: '0.45s', opacity: 0 }}
         >
-          <div className="flex flex-col items-center gap-2">
-            <Balloon color="#FF4444" size={55} style={{ animationDelay: '0s', animationDuration: '3.8s' }} />
-            <Balloon color="#FF69B4" size={44} style={{ animationDelay: '0.6s', animationDuration: '4.5s', marginTop: '-12px' }} />
+          <div className="flex flex-col items-center gap-1">
+            <Balloon color="#FF4444" size={40} style={{ animationDelay: '0s', animationDuration: '3.8s' }} />
+            <Balloon color="#FF69B4" size={32} style={{ animationDelay: '0.6s', animationDuration: '4.5s', marginTop: '-8px' }} />
           </div>
 
-          <div className="relative">
+          <div className="relative flex-shrink-0">
             <div
-              className="absolute -top-10 left-1/2 -translate-x-1/2 text-4xl animate-sway select-none"
+              className="absolute -top-10 left-1/2 -translate-x-1/2 text-3xl sm:text-4xl animate-sway select-none"
               style={{ zIndex: 2 }}
             >
               🎩
@@ -83,9 +83,9 @@ export default function App() {
             <PhotoFrame />
           </div>
 
-          <div className="flex flex-col items-center gap-2">
-            <Balloon color="#FF69B4" size={50} style={{ animationDelay: '0.3s', animationDuration: '4.2s' }} />
-            <Balloon color="#FF4444" size={46} style={{ animationDelay: '0.9s', animationDuration: '3.5s', marginTop: '-12px' }} />
+          <div className="flex flex-col items-center gap-1">
+            <Balloon color="#FF69B4" size={38} style={{ animationDelay: '0.3s', animationDuration: '4.2s' }} />
+            <Balloon color="#FF4444" size={34} style={{ animationDelay: '0.9s', animationDuration: '3.5s', marginTop: '-8px' }} />
           </div>
         </div>
 
@@ -99,6 +99,7 @@ export default function App() {
             style={{
               background: 'rgba(255,255,255,0.55)',
               backdropFilter: 'blur(6px)',
+              WebkitBackdropFilter: 'blur(6px)',
               border: '2px dashed #FF69B4',
               boxShadow: '0 4px 20px rgba(255,105,180,0.2)',
               minWidth: '200px',
@@ -126,6 +127,7 @@ export default function App() {
             style={{
               background: 'rgba(255,255,255,0.6)',
               backdropFilter: 'blur(8px)',
+              WebkitBackdropFilter: 'blur(8px)',
               border: '2px solid rgba(255,105,180,0.35)',
               boxShadow: '0 8px 32px rgba(255,105,180,0.2)',
               minHeight: '90px',
