@@ -9,6 +9,7 @@
 body {
   font-family: 'Nunito', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   overflow-x: hidden;
+  background: #4A0080;
 }
 
 #root {
