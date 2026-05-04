@@ -68,7 +68,7 @@ class ErrorBoundary extends Component {
 export default function App() {
   const [page, setPage] = useState(0)
   const [key, setKey] = useState(0)
-  const [direction, setDirection] = useState('forward')
+  const [direction, setDirection] = useState(null)
 
   const navigate = (next) => {
     setDirection(next > page ? 'forward' : 'back')
@@ -82,7 +82,7 @@ export default function App() {
   const goStart = () => navigate(0)
 
   const PageComponent = PAGES[page]
-  const animClass = direction === 'forward' ? 'animate-page-slide' : 'animate-page-slide-back'
+  const animClass = direction === null ? '' : direction === 'forward' ? 'animate-page-slide' : 'animate-page-slide-back'
 
   return (
     <ErrorBoundary>
