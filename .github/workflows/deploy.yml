@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main, master, claude/build-website-template-xJHDc]
+    branches: [main, master, claude/build-website-template-xJHDc, copilot/adjust-picture-frame-position]
   workflow_dispatch:
 
 permissions:
