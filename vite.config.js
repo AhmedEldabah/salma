@@ -3,6 +3,6 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
-  base: '/salma-claude-build-website-template-xJHDc/',
+  base: '/salma/',
   plugins: [react(), tailwindcss()],
 })
