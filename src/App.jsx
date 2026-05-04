@@ -18,10 +18,13 @@ class ErrorBoundary extends Component {
   static getDerivedStateFromError(error) {
     return { error }
   }
+  componentDidCatch(error, info) {
+    console.error('App error:', error, info)
+  }
   render() {
     if (this.state.error) {
       return (
-        <div style={{
+        <main role="alert" style={{
           minHeight: '100vh',
           display: 'flex',
           flexDirection: 'column',
@@ -55,7 +58,7 @@ class ErrorBoundary extends Component {
           >
             Refresh 🔄
           </button>
-        </div>
+        </main>
       )
     }
     return this.props.children
