@@ -34,17 +34,17 @@ export default function PagePhoto({ onNext, onBack }) {
         <Bunting />
       </div>
 
-      <main className="relative z-20 flex flex-col items-center justify-start flex-1 px-8 pt-2 pb-16">
+      <main className="relative z-20 flex flex-col items-center justify-start flex-1 px-6 sm:px-8 pt-6 sm:pt-8 pb-16">
         <p
-          className="animate-fadeInUp delay-100 mb-3 font-extrabold tracking-widest uppercase"
+          className="animate-fadeInUp delay-100 mb-12 sm:mb-14 font-extrabold tracking-widest uppercase"
           style={{ color: 'rgba(255,255,255,0.85)', fontSize: 'clamp(0.75rem, 2.5vw, 0.95rem)' }}
         >
           ✨ Today's Star ✨
         </p>
 
         {/* tap-to-pop balloons + photo */}
-        <div className="flex items-center justify-center gap-8 sm:gap-16 mb-5 animate-fadeInUp delay-200">
-          <div className="flex flex-col items-center gap-3">
+        <div className="flex items-center justify-center gap-6 sm:gap-16 mb-8 animate-fadeInUp delay-200">
+          <div className="flex flex-col items-center gap-2">
             <PopBalloon
               color={BALLOON_PAIRS[0].color}
               size={BALLOON_PAIRS[0].size}
@@ -53,7 +53,7 @@ export default function PagePhoto({ onNext, onBack }) {
             <PopBalloon
               color={BALLOON_PAIRS[1].color}
               size={BALLOON_PAIRS[1].size}
-              style={{ animationDelay: BALLOON_PAIRS[1].delay, animationDuration: BALLOON_PAIRS[1].duration, marginTop: '-10px' }}
+              style={{ animationDelay: BALLOON_PAIRS[1].delay, animationDuration: BALLOON_PAIRS[1].duration }}
             />
           </div>
 
@@ -85,7 +85,7 @@ export default function PagePhoto({ onNext, onBack }) {
             </div>
           </div>
 
-          <div className="flex flex-col items-center gap-3">
+          <div className="flex flex-col items-center gap-2">
             <PopBalloon
               color={BALLOON_PAIRS[2].color}
               size={BALLOON_PAIRS[2].size}
@@ -94,46 +94,49 @@ export default function PagePhoto({ onNext, onBack }) {
             <PopBalloon
               color={BALLOON_PAIRS[3].color}
               size={BALLOON_PAIRS[3].size}
-              style={{ animationDelay: BALLOON_PAIRS[3].delay, animationDuration: BALLOON_PAIRS[3].duration, marginTop: '-10px' }}
+              style={{ animationDelay: BALLOON_PAIRS[3].delay, animationDuration: BALLOON_PAIRS[3].duration }}
             />
           </div>
         </div>
 
-        <p className="text-white/70 font-bold text-xs uppercase tracking-widest animate-fadeInUp delay-400 mb-3">
+        <p className="text-white/70 font-bold text-xs uppercase tracking-widest animate-fadeInUp delay-400 mb-8">
           tap a balloon 🎈
         </p>
 
         {/* name card with hand-drawn underline */}
-        <div className="animate-fadeInUp delay-400 mb-8">
+        <div className="animate-fadeInUp delay-400 mb-10">
           <div
-            className="glass rounded-3xl px-12 py-8 text-center relative"
+            className="glass rounded-3xl px-10 sm:px-12 py-8 text-center relative"
             style={{ boxShadow: '0 8px 32px rgba(0,0,0,0.15)' }}
           >
-            <h2
-              style={{
-                fontFamily: "'Pacifico', cursive",
-                fontSize: 'clamp(2rem, 7vw, 3rem)',
-                color: '#fff',
-                textShadow: '0 3px 12px rgba(0,0,0,0.2)',
-              }}
-            >
-              Salma 💖
-            </h2>
-            <div className="absolute left-1/2 -translate-x-1/2" style={{ width: '60%', bottom: 4 }}>
-              <HandDrawnUnderline color="#FFD700" delay={600} stroke={4} height={10} />
+            <div className="relative inline-block">
+              <h2
+                style={{
+                  fontFamily: "'Pacifico', cursive",
+                  fontSize: 'clamp(2rem, 7vw, 3rem)',
+                  color: '#fff',
+                  textShadow: '0 3px 12px rgba(0,0,0,0.2)',
+                  lineHeight: 1.1,
+                }}
+              >
+                Salma 💖
+              </h2>
+              <div className="absolute left-1/2 -translate-x-1/2" style={{ width: '80%', bottom: -10 }}>
+                <HandDrawnUnderline color="#FFD700" delay={600} stroke={4} height={10} />
+              </div>
             </div>
-            <p className="mt-6 font-bold tracking-widest uppercase text-white/75 text-xs">
+            <p className="mt-8 font-bold tracking-widest uppercase text-white/75 text-xs">
               The birthday queen 👑
             </p>
           </div>
         </div>
 
         {/* trait chips — viewport-triggered staggered reveal */}
-        <div ref={traitsRef} className="flex gap-5 mb-8 flex-wrap justify-center max-w-md">
+        <div ref={traitsRef} className="flex gap-3 sm:gap-4 mb-10 flex-wrap justify-center max-w-md">
           {TRAITS.map((t, i) => (
             <span
               key={t.label}
-              className="glass tap-card px-6 py-3 rounded-full font-bold text-white text-sm flex items-center gap-2"
+              className="glass tap-card px-5 py-2.5 rounded-full font-bold text-white text-sm flex items-center gap-2 whitespace-nowrap"
               style={{
                 opacity: traitsIn ? 1 : 0,
                 transform: traitsIn ? 'translateY(0) scale(1)' : 'translateY(16px) scale(0.85)',
