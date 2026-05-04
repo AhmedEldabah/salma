@@ -90,7 +90,7 @@ export default function App() {
       <Grain />
       <TapBurst />
       <IdleMascot />
-      <div className={animClass} key={key} style={{ minHeight: '100vh' }}>
+      <div className={`${animClass} page-full`} key={key}>
         <PageComponent onNext={goNext} onBack={goBack} onRestart={goStart} />
       </div>
     </ErrorBoundary>

@@ -49,15 +49,14 @@ export default function PageLove({ onBack, onRestart }) {
 
   return (
     <div
-      className="relative w-full overflow-hidden flex flex-col items-center"
+      className="page-full relative w-full overflow-hidden flex flex-col items-center"
       style={{
         background: 'linear-gradient(150deg, #7F1D1D 0%, #BE123C 40%, #E11D48 75%, #FF69B4 100%)',
-        minHeight: '100vh',
       }}
     >
       <Confetti count={burst ? 90 : 0} key={burst ? 'burst' : 'idle'} />
 
-      <main className="relative z-20 flex flex-col items-center justify-center flex-1 w-full max-w-sm px-8 py-28">
+      <main className="relative z-20 flex flex-col items-center justify-center flex-1 w-full max-w-sm px-8 py-12 pb-safe">
         <div className="text-center mb-16 animate-fadeInUp">
           <span
             className={`block mb-3 ${loved ? 'animate-heartbeat' : 'animate-wiggle'}`}
