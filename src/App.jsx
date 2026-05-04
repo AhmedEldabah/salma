@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, Component } from 'react'
 import PageWelcome from './components/PageWelcome'
 import PagePhoto from './components/PagePhoto'
 import PageWishes from './components/PageWishes'
@@ -9,6 +9,61 @@ import TapBurst from './components/TapBurst'
 import IdleMascot from './components/IdleMascot'
 
 const PAGES = [PageWelcome, PagePhoto, PageWishes, PageLove]
+
+class ErrorBoundary extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { error: null }
+  }
+  static getDerivedStateFromError(error) {
+    return { error }
+  }
+  componentDidCatch(error, info) {
+    console.error('App error:', error, info)
+  }
+  render() {
+    if (this.state.error) {
+      return (
+        <main role="alert" style={{
+          minHeight: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          background: 'linear-gradient(145deg, #4A0080 0%, #9C0064 40%, #E91E8C 75%, #FF6DB4 100%)',
+          padding: '2rem',
+          textAlign: 'center',
+        }}>
+          <span style={{ fontSize: '4rem' }}>🎂</span>
+          <h1 style={{ fontFamily: 'Pacifico, cursive', color: '#fff', fontSize: '2rem', marginTop: '1rem' }}>
+            Oops! Something went wrong
+          </h1>
+          <p style={{ color: 'rgba(255,255,255,0.8)', marginTop: '0.75rem', fontFamily: 'Nunito, sans-serif' }}>
+            Please refresh the page to try again 💖
+          </p>
+          <button
+            onClick={() => window.location.reload()}
+            style={{
+              marginTop: '1.5rem',
+              padding: '0.75rem 2rem',
+              background: 'linear-gradient(135deg, #FF4081, #FF69B4)',
+              border: 'none',
+              borderRadius: '9999px',
+              color: '#fff',
+              fontFamily: 'Nunito, sans-serif',
+              fontWeight: 800,
+              fontSize: '1rem',
+              cursor: 'pointer',
+            }}
+          >
+            Refresh 🔄
+          </button>
+        </main>
+      )
+    }
+    return this.props.children
+  }
+}
 
 export default function App() {
   const [page, setPage] = useState(0)
@@ -30,7 +85,7 @@ export default function App() {
   const animClass = direction === 'forward' ? 'animate-page-slide' : 'animate-page-slide-back'
 
   return (
-    <>
+    <ErrorBoundary>
       <ScrollProgress />
       <Grain />
       <TapBurst />
@@ -38,6 +93,6 @@ export default function App() {
       <div className={animClass} key={key} style={{ minHeight: '100vh' }}>
         <PageComponent onNext={goNext} onBack={goBack} onRestart={goStart} />
       </div>
-    </>
+    </ErrorBoundary>
   )
 }

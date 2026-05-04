@@ -34,16 +34,16 @@ export default function PagePhoto({ onNext, onBack }) {
         <Bunting />
       </div>
 
-      <main className="relative z-20 flex flex-col items-center justify-start flex-1 px-8 pt-8 pb-16">
+      <main className="relative z-20 flex flex-col items-center justify-start flex-1 px-8 pt-2 pb-16">
         <p
-          className="animate-fadeInUp delay-100 mb-6 font-extrabold tracking-widest uppercase"
+          className="animate-fadeInUp delay-100 mb-3 font-extrabold tracking-widest uppercase"
           style={{ color: 'rgba(255,255,255,0.85)', fontSize: 'clamp(0.75rem, 2.5vw, 0.95rem)' }}
         >
           ✨ Today's Star ✨
         </p>
 
         {/* tap-to-pop balloons + photo */}
-        <div className="flex items-center justify-center gap-8 sm:gap-16 mb-8 animate-fadeInUp delay-200">
+        <div className="flex items-center justify-center gap-8 sm:gap-16 mb-5 animate-fadeInUp delay-200">
           <div className="flex flex-col items-center gap-3">
             <PopBalloon
               color={BALLOON_PAIRS[0].color}
@@ -99,7 +99,7 @@ export default function PagePhoto({ onNext, onBack }) {
           </div>
         </div>
 
-        <p className="text-white/70 font-bold text-xs uppercase tracking-widest animate-fadeInUp delay-400 mb-6">
+        <p className="text-white/70 font-bold text-xs uppercase tracking-widest animate-fadeInUp delay-400 mb-3">
           tap a balloon 🎈
         </p>
 
