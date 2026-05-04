@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main, master, claude/build-website-template-xJHDc, copilot/adjust-picture-frame-position, copilot/fix-purple-screen-issue]
+    branches: [main, master, claude/build-website-template-xJHDc, claude/fix-github-deploy-issue-C2DhH, copilot/adjust-picture-frame-position, copilot/fix-purple-screen-issue]
   workflow_dispatch:
 
 permissions:
@@ -33,6 +33,8 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/configure-pages@v4
+        with:
+          enablement: true
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
