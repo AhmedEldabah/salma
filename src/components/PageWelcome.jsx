@@ -22,10 +22,9 @@ export default function PageWelcome({ onNext }) {
 
   return (
     <div
-      className="relative w-full overflow-hidden flex flex-col items-center"
+      className="page-full relative w-full overflow-hidden flex flex-col items-center"
       style={{
         background: 'linear-gradient(145deg, #4A0080 0%, #9C0064 40%, #E91E8C 75%, #FF6DB4 100%)',
-        minHeight: '100vh',
       }}
     >
       <Confetti count={55} />
@@ -47,8 +46,7 @@ export default function PageWelcome({ onNext }) {
 
       {/* Hero — first viewport */}
       <section
-        className="relative z-20 flex flex-col items-center justify-center px-8 text-center gap-6"
-        style={{ minHeight: '100vh' }}
+        className="page-full relative z-20 flex flex-col items-center justify-center px-8 text-center gap-6"
       >
         {/* cake (long-press for easter egg) */}
         <div

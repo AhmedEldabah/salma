@@ -4,17 +4,41 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  height: 100%;
+  height: -webkit-fill-available;
 }
 
 body {
   font-family: 'Nunito', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   overflow-x: hidden;
   background: #4A0080;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  overscroll-behavior: none;
+  -webkit-font-smoothing: antialiased;
 }
 
 #root {
   width: 100%;
   min-height: 100vh;
+  min-height: -webkit-fill-available;
+}
+
+.page-full {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.pb-safe {
+  padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+}
+
+.pt-safe {
+  padding-top: max(0px, env(safe-area-inset-top));
 }
 
 /* ── Keyframes ─────────────────────────────────────────────────── */
